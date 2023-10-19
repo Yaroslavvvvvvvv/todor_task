@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import TaskItem from './TaskItem';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TaskList = ({ tasks }) => {
     const [filterStatus, setFilterStatus] = useState('Все');
@@ -21,11 +22,12 @@ const TaskList = ({ tasks }) => {
     });
 
     return (
-        <div>
-            <h2>Список задач</h2>
-            <div>
-                <label>Фильтр по статусу:</label>
+        <div className="container text-center mt-4">
+            <h2 className="mb-4">Список задач</h2>
+            <div className="form-group">
+                <label className="m-4">Фильтр по статусу:</label>
                 <select
+                    className="form-control"
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
                 >
@@ -35,9 +37,10 @@ const TaskList = ({ tasks }) => {
                     <option value="Выполнена">Выполнена</option>
                 </select>
             </div>
-            <div>
-                <label>Фильтр по приоритету:</label>
+            <div className="form-group">
+                <label className="m-4">Фильтр по приоритету:</label>
                 <select
+                    className="form-control"
                     value={filterPriority}
                     onChange={(e) => setFilterPriority(e.target.value)}
                 >
@@ -47,15 +50,16 @@ const TaskList = ({ tasks }) => {
                     <option value="Высокий">Высокий</option>
                 </select>
             </div>
-            <div>
-                <label>Поиск по названию:</label>
+            <div className="form-group mb-4">
+                <label className="m-4">Поиск по названию:</label>
                 <input
                     type="text"
+                    className="form-control"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
             </div>
-            <ul>
+            <ul className="list-group">
                 {filteredTasks.map((task) => (
                     <TaskItem key={task.id} task={task} />
                 ))}

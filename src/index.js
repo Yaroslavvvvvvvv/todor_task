@@ -7,6 +7,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AddTask from "./components/AddTask";
 import { loadTasks } from './redux/actions';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 store.dispatch(loadTasks());
 

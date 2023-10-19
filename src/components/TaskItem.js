@@ -29,26 +29,35 @@ const TaskItem = ({ task, deleteTask, editTask, toggleTaskStatus }) => {
     };
 
     return (
-        <li>
+        <li className="list-group-item">
             {isEditing ? (
                 <div>
                     <input
+                        className="form-control"
                         type="text"
                         name="title"
                         value={editedTask.title}
                         onChange={handleInputChange}
                     />
-                    <button onClick={handleSave}>Сохранить</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={handleSave}>Сохранить</button>
                 </div>
             ) : (
                 <div>
-                    <strong>Название:</strong> {task.title}<br />
-                    <strong>Описание:</strong> {task.description}<br />
-                    <strong>Приоритет:</strong> {task.priority}<br />
-                    <strong>Статус:</strong> {task.status}
-                    <button onClick={handleEdit}>Редактировать</button>
-                    <button onClick={handleDelete}>Удалить</button>
-                    <button onClick={handleToggleStatus}>
+                    <strong>Название:</strong> {task.title}<br/>
+                    <strong>Описание:</strong> {task.description}<br/>
+                    <strong>Приоритет:</strong> {task.priority}<br/>
+                    <strong>Статус:</strong> {task.status}<br/>
+                    <button
+                        className="btn btn-warning"
+                        onClick={handleEdit}>Редактировать</button>
+                    <button
+                        className="btn btn-danger"
+                        onClick={handleDelete}>Удалить</button>
+                    <button
+                        className="btn btn-info"
+                        onClick={handleToggleStatus}>
                         {task.status === 'Выполнена' ? 'Отметить как не выполнена' : 'Отметить как выполнена'}
                     </button>
                 </div>
@@ -58,4 +67,6 @@ const TaskItem = ({ task, deleteTask, editTask, toggleTaskStatus }) => {
 };
 
 export default connect(null, { deleteTask, editTask, toggleTaskStatus })(TaskItem);
+
+
 
